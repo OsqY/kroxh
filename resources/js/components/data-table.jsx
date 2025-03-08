@@ -27,14 +27,16 @@ export function DataTable({ columns, data }) {
 
     return (
         <div>
-            <div className="rounded-md border">
+            <div className="rounded-md border dark:border-gray-700">
                 <Table>
-                    <TableHeader>
+                    <TableHeader className="bg-gray-100 dark:bg-gray-800">
                         {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id}>
+                            <TableRow key={headerGroup.id}
+                                      className="hover:bg-gray-200 dark:hover:bg-gray-700 border-b dark:border-gray-700">
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead key={header.id}
+                                                   className="text-gray-900 dark:text-gray-100 font-medium">
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -53,17 +55,19 @@ export function DataTable({ columns, data }) {
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && 'selected'}
+                                    className="hover:bg-gray-100 dark:hover:bg-gray-700 border-b dark:border-gray-700"
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
+                                        <TableCell key={cell.id} className="text-gray-900 dark:text-gray-200">
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}
                                 </TableRow>
                             ))
                         ) : (
-                            <TableRow>
-                                <TableCell colSpan={columns?.length} className="h-24 text-center">
+                            <TableRow className="border-b dark:border-gray-700">
+                                <TableCell colSpan={columns?.length}
+                                           className="h-24 text-center text-gray-500 dark:text-gray-400">
                                     No hay resultados.
                                 </TableCell>
                             </TableRow>
@@ -77,6 +81,7 @@ export function DataTable({ columns, data }) {
                     size="sm"
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
+                    className="border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                     Anterior
                 </Button>
@@ -85,6 +90,7 @@ export function DataTable({ columns, data }) {
                     size="sm"
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
+                    className="border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                     Siguiente
                 </Button>

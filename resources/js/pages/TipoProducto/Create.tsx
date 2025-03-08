@@ -1,21 +1,18 @@
-import { Head } from '@inertiajs/react';
-import AuthLayout from '@/layouts/auth-layout.js';
 import TipoProductoForm from '@/pages/TipoProducto/TipoProductoForm';
-import AppLayout from '@/layouts/app-layout';
+import FormContainer from '@/components/form-container';
 
-export default function Create({ auth }) {
+export default function Create() {
+
     return (
-        <AppLayout
+        <FormContainer
+            title="Crear Tipo de Producto"
+            breadcrumbs={[
+                { label: 'Dashboard', href: route('dashboard') },
+                { label: 'Tipos de Productos', href: route('tipo-productos.index') },
+                { label: 'Crear Tipo de Producto' }
+            ]}
         >
-            <Head title="Crear Tipo de Producto" />
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                        <TipoProductoForm />
-                    </div>
-                </div>
-            </div>
-        </AppLayout>
+            <TipoProductoForm />
+        </FormContainer>
     );
 }

@@ -1,21 +1,17 @@
-import { Head } from '@inertiajs/react';
-import TipoProductoForm from '@/pages/TipoProducto/TallaForm';
-import AppLayout from '@/layouts/app-layout.js';
-import TallaForm from '@/pages/Talla/TallaForm.js';
+import FormContainer from '@/components/form-container';
+import TallaForm from '@/pages/Talla/TallaForm';
 
-export default function Edit({ auth, talla }) {
+export default function Edit({ talla }) {
     return (
-        <AppLayout
+        <FormContainer
+            title="Editar Talla"
+            breadcrumbs={[
+                { label: 'Dashboard', href: route('dashboard') },
+                { label: 'Tallas', href: route('tallas.index') },
+                { label: 'Editar Talla' }
+            ]}
         >
-            <Head title="Editar Talla" />
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                        <TallaForm talla={talla} />
-                    </div>
-                </div>
-            </div>
-        </AppLayout>
+            <TallaForm talla={talla} />
+        </FormContainer>
     );
 }

@@ -54,7 +54,7 @@ class TallaController extends Controller
     public function update(Request $request, Talla $talla)
     {
         $validated = $request->validate([
-            'nombre' => 'required|unique:tallas|max:255'
+            'nombre' => 'required|max:255|unique:tallas,nombre,'.$talla->id
         ]);
 
         $talla->update($validated);

@@ -1,17 +1,17 @@
-import TallaForm from '@/pages/Talla/TallaForm';
 import FormContainer from '@/components/form-container';
+import AlertaForm from '@/pages/Alertas/AlertaForm';
 
 export default function Create() {
     return (
         <FormContainer
-            title="Editar Talla"
+            title="Crear Alerta"
             breadcrumbs={[
                 { label: 'Dashboard', href: route('dashboard') },
-                { label: 'Tallas', href: route('tallas.index') },
-                { label: 'Editar Talla' }
+                { label: 'Alertas', href: route('alertas.index') },
+                { label: 'Crear Alerta' }
             ]}
         >
-            <TallaForm />
+            <AlertaForm />
         </FormContainer>
     );
 }

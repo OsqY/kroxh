@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\InventarioPrendaController;
+use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\TallaController;
 use App\Http\Controllers\TipoProductoController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('colores', ColorController::class, [
         'parameters' => ['colores' => 'color']
     ]);
+    Route::resource('alertas', AlertaController::class);
+    Route::resource('prendas',PrendaController::class);
+    Route::resource('inventario-prendas', InventarioPrendaController::class);
 
 
 });

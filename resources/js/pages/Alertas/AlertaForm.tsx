@@ -1,34 +1,29 @@
-import { useForm } from '@inertiajs/react';
-import { Button } from '@/components/ui/button.js';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card.js';
-import { Alert, AlertDescription } from '@/components/ui/alert.js';
-import { Input } from '@/components/ui/input.js';
-import { Label } from '@/components/ui/label.js';
-import { ArrowLeft, Save } from 'lucide-react';
 import FormCard from '@/components/form-card';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useForm } from '@inertiajs/react';
 
-export default function ColorForm({ color: color = null }) {
+export default function AlertaForm({ alerta: alerta = null }) {
     const { data, setData, errors, post, put, processing } = useForm({
-        nombre: color ? color.nombre : '',
-        codigo_hexadecimal: color ? color.codigo_hexadecimal : ''
+        nombre: alerta ? alerta.nombre : ''
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (color) {
-            put(route('colores.update', color.id));
+        if (alerta) {
+            put(route('alertas.update'), alerta.id);
         } else {
-            post(route('colores.store'));
+            post(route('alertas.store'));
         }
     };
-
     return (
         <FormCard
-            title={`${color ? 'Editar' : 'Crear'} Color`}
+            title={`${alerta ? 'Editar' : 'Crear'} Alerta`}
             onSubmit={handleSubmit}
             processing={processing}
-            submitLabel={color ? 'Actualizar' : 'Guardar'}
+            submitLabel={alerta ? 'Actualizar' : 'Guardar'}
         >
             <div className="space-y-2">
                 <Label htmlFor="nombre" className="dark:text-gray-200">Nombre</Label>
@@ -36,17 +31,16 @@ export default function ColorForm({ color: color = null }) {
                     id="nombre"
                     value={data.nombre}
                     onChange={e => setData('nombre', e.target.value)}
-                    placeholder="Nombre del tipo de producto"
+                    placeholder="Nombre de la Alerta"
                     className={`dark:bg-gray-700 dark:text-white dark:border-gray-600 ${errors.nombre ? 'border-red-500 dark:border-red-500' : ''}`}
                 />
                 {errors.nombre && (
-                    <Alert variant="destructive" className="mt-2 py-2 dark:bg-red-900/30 dark:border-red-800 dark:text-red-200">
+                    <Alert variant="destructive"
+                           className="mt-2 py-2 dark:bg-red-900/30 dark:border-red-800 dark:text-red-200">
                         <AlertDescription>{errors.nombre}</AlertDescription>
                     </Alert>
                 )}
             </div>
         </FormCard>
     );
-
 }
-

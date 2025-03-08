@@ -31,6 +31,24 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
 
     },
+    {
+        title:'Alertas',
+        url: '/alertas',
+        icon: LayoutGrid,
+
+    },
+    {
+        title:'Prendas',
+        url: '/prendas',
+        icon: LayoutGrid,
+
+    },
+    {
+        title:'Inventario de Prendas',
+        url: '/inventario-prendas',
+        icon: LayoutGrid,
+
+    },
 ];
 
 const footerNavItems: NavItem[] = [

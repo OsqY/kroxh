@@ -1,21 +1,17 @@
-import { Head } from '@inertiajs/react';
-import AuthLayout from '@/layouts/auth-layout.js';
-import TipoProductoForm from '@/pages/TipoProducto/TallaForm';
-import AppLayout from '@/layouts/app-layout.js';
+import FormContainer from '@/components/form-container';
+import TipoProductoForm from '@/pages/TipoProducto/TipoProductoForm';
 
-export default function Edit({ auth, tipoProducto }) {
+export default function Edit({ tipoProducto }) {
     return (
-        <AppLayout
+        <FormContainer
+            title="Editar Tipo de Producto"
+            breadcrumbs={[
+                { label: 'Dashboard', href: route('dashboard') },
+                { label: 'Tipos de Productos', href: route('tipo-productos.index') },
+                { label: 'Editar Tipo de Producto' }
+            ]}
         >
-            <Head title="Editar Tipo de Producto" />
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                        <TipoProductoForm tipoProducto={tipoProducto} />
-                    </div>
-                </div>
-            </div>
-        </AppLayout>
+            <TipoProductoForm tipoProducto={tipoProducto} />
+        </FormContainer>
     );
 }
