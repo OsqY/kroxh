@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DescuentoRequest;
 use App\Models\Descuento;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DescuentoController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $descuentos = Descuento::all();
+        return Inertia::render('Descuentos/Index', [
+            'descuentos' => $descuentos
+        ]);
     }
 
     /**
@@ -20,15 +27,19 @@ class DescuentoController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Descuentos/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DescuentoRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Descuento::create($validated);
+
+        return redirect()->route('descuentos.index')
+            ->with('success', 'Descuento creado exitosamente');
     }
 
     /**
@@ -36,7 +47,9 @@ class DescuentoController extends Controller
      */
     public function show(Descuento $descuento)
     {
-        //
+        return Inertia::render('Descuentos/Show', [
+            'descuento' => $descuento
+        ]);
     }
 
     /**
@@ -44,15 +57,20 @@ class DescuentoController extends Controller
      */
     public function edit(Descuento $descuento)
     {
-        //
+        return Inertia::render('Descuentos/Edit', [
+            'descuento' => $descuento
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Descuento $descuento)
+    public function update(DescuentoRequest $request, Descuento $descuento)
     {
-        //
+        $validated = $request->validated();
+        $descuento->update($validated);
+
+        return redirect()->route('descuentos.index');
     }
 
     /**
@@ -60,6 +78,9 @@ class DescuentoController extends Controller
      */
     public function destroy(Descuento $descuento)
     {
-        //
+        $descuento->delete();
+
+        return redirect()->route('descuentos.index')
+            ->with('success', 'Descuento eliminado exitosamente');
     }
 }

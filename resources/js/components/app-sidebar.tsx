@@ -49,6 +49,12 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
 
     },
+    {
+        title:'Descuentos',
+        url: '/descuentos',
+        icon: LayoutGrid,
+
+    },
 ];
 
 const footerNavItems: NavItem[] = [

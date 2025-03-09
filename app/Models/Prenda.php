@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Prenda extends Model
 {
@@ -30,6 +31,12 @@ class Prenda extends Model
     public function color(): BelongsTo
     {
         return $this->belongsTo(Color::class);
+    }
+
+    public function descuentos(): HasMany
+    {
+        return $this->belongsToMany(Descuento::class, 'descuentos_prendas')
+            ->withTimestamps();
     }
 
     protected static function boot()

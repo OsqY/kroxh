@@ -1,15 +1,16 @@
 import FormContainer from '@/components/form-container';
-import InventarioPrendaForm from '@/pages/InventarioPrendas/InventarioPrendaForm';
+import DescuentoForm from '@/pages/Descuentos/DescuentoForm';
 
-export default function Create({ prendas, errors }) {
+export default function Create({  errors }) {
     const breadcrumbs = [
         { title: 'Dashboard', href: route('dashboard') },
-        { title: 'Inventario de Prendas', href: route('inventario-prendas.index') },
-        { title: 'Crear Inventario de Prendas' }
+        { title: 'Descuentos', href: route('descuentos.index') },
+        { title: 'Crear Descuento' }
     ];
 
     return (
-        <FormContainer title="Crear Inventario"
+
+        <FormContainer title="Crear Descuento"
                        breadcrumbs={breadcrumbs}
         >
             <div>
@@ -19,9 +20,7 @@ export default function Create({ prendas, errors }) {
                     </div>
                 )}
             </div>
-            <InventarioPrendaForm
-                prendas={prendas}
-            />
+            <DescuentoForm/>
         </FormContainer>
     );
 }

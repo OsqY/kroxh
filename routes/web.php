@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\DescuentoController;
 use App\Http\Controllers\InventarioPrendaController;
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\TallaController;
@@ -24,8 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'parameters' => ['colores' => 'color']
     ]);
     Route::resource('alertas', AlertaController::class);
-    Route::resource('prendas',PrendaController::class);
+    Route::resource('prendas', PrendaController::class);
     Route::resource('inventario-prendas', InventarioPrendaController::class);
+    Route::resource('descuentos', DescuentoController::class);
 
 
 });
